@@ -1,0 +1,49 @@
+<div class="title-container"><h1 class="title">REGISTRO DE NOTIFICACIONES</h1></div>
+<div class="container" style="text-align: center"> 
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+    <mat-form-field class="example-full-width"  *ngIf="edicion" >
+      <mat-label>codigo</mat-label>
+      <input matInput placeholder="Id" formControlName="IdNotification" />      
+    </mat-form-field>
+    <br/>
+
+
+    
+    <mat-form-field>
+        <mat-select placeholder="Ingrese usuario" formControlName="username">
+            <mat-option *ngFor="let c of listarUser" [value]="c.id">
+              {{ c.username}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('username')?.hasError('required')"
+            >El usuario es obligatorio</mat-error>
+        </mat-form-field>
+
+    <br/>
+<mat-form-field>
+        <input matInput placeholder="TITULO" formControlName="title">
+        <mat-error *ngIf="form.get('owner')?.hasError('required')">El titular es obligatorio</mat-error>  
+    </mat-form-field>
+    <br/>
+ 
+ <mat-form-field>
+        <input matInput placeholder="Descripción" formControlName="description">
+        <mat-error *ngIf="form.get('description')?.hasError('required')">Casilla obligatoria</mat-error>  
+    </mat-form-field>   
+
+    <br/>
+<mat-form-field>
+        <mat-label> ESTADO </mat-label>
+        <mat-select placeholder="Inserte"formControlName="statu">
+            <mat-option *ngFor="let m of statu" [value]="m.value">
+                {{m.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br/>
+
+    <button mat-raised-button color="primary"> Aceptar </button>
+
+  </form>
+</div>
