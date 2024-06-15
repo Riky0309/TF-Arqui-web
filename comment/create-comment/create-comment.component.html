@@ -1,0 +1,35 @@
+<div class="title-container"><h1 class="title">Registro de Comentario</h1></div>
+<div class="container" style="text-align: center"> 
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+    <mat-form-field class="example-full-width"  *ngIf="edicion" >
+      <mat-label>codigo</mat-label>
+      <input matInput placeholder="Id" formControlName="IdComment" />      
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field>
+    <mat-select placeholder="Ingrese usuario" formControlName="username">
+        <mat-option *ngFor="let c of listarUser" [value]="c.id">
+          {{ c.username}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('username')?.hasError('required')"
+        >El usuario es obligatorio</mat-error>
+    </mat-form-field>
+
+    <br/>
+
+    <mat-form-field>
+        <input matInput placeholder="Descripcion" formControlName="descripcion">
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')">La descripcion del comentario es obligatorio.</mat-error>  
+    </mat-form-field>
+
+    <br/>
+    
+    <button mat-raised-button color="primary"> Aceptar </button>
+
+  </form>
+</div>
+
