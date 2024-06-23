@@ -1,0 +1,36 @@
+<!-- create-post.component.html -->
+<div class="title-container"><h1 class="title">Registro de Post</h1></div>
+<div class="container" style="text-align: center">
+  <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+    <mat-form-field class="example-full-width" *ngIf="edicion">
+      <mat-label>Id</mat-label>
+      <input matInput placeholder="Id" formControlName="idC" />
+    </mat-form-field>
+    <br/>
+
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción" formControlName="desciption"></textarea>
+      <mat-error *ngIf="form.get('desciption')?.hasError('required')">La descripción es obligatoria.</mat-error>
+    </mat-form-field>
+    <br/>
+
+
+    <mat-form-field>
+      <mat-label>USER</mat-label>
+      <mat-select placeholder="Users" formControlName="idUser">
+        <mat-option *ngFor="let user of ListarUser" [value]="user.id">
+          {{ user.username }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('idUser')?.hasError('required')">El foro es obligatorio.</mat-error>
+    </mat-form-field>
+    <br/>
+
+    <button mat-raised-button color="primary">Aceptar</button>
+
+  </form>
+</div>
+
+

@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" *ngIf="verificar()">
+  <button mat-button [routerLink]="['/homes']">
+    <mat-icon>home</mat-icon>Home
+  </button>
+  
+  
+  <button mat-button [matMenuTriggerFor]="menuComment" *ngIf="isAdmin()"><mat-icon> comment</mat-icon>Comentarios</button>
+  <button mat-button [matMenuTriggerFor]="menuSalir"><mat-icon>people</mat-icon>Usuario</button>
+
+
+</mat-toolbar>
+
+
+<mat-menu #menuComment="matMenu">
+  <button mat-menu-item routerLink="/comments">Listar</button>
+  <button mat-menu-item routerLink="/comments/registerComment">Registrar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+
+
+<mat-menu  #menuSalir="matMenu" >
+  
+  
+  <button mat-menu-item>
+    <mat-icon>assignment_ind</mat-icon>
+    ROL:
+    <span>{{role}}</span>
+  </button>
+  <button mat-menu-item routerLink="/login" (click)="eliminar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>
